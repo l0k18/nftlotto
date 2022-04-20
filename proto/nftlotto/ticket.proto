@@ -1,0 +1,10 @@
+syntax = "proto3";
+package l0k18.nftlotto.nftlotto;
+
+option go_package = "github.com/l0k18/nftlotto/x/nftlotto/types";
+
+message Ticket {
+  uint64 id = 1;
+  uint64 lottery = 2; 
+  string creator = 3;
+}

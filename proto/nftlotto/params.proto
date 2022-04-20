@@ -1,0 +1,12 @@
+syntax = "proto3";
+package l0k18.nftlotto.nftlotto;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/l0k18/nftlotto/x/nftlotto/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (gogoproto.goproto_stringer) = false;
+  
+}

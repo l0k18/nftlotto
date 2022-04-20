@@ -1,0 +1,73 @@
+syntax = "proto3";
+package l0k18.nftlotto.nftlotto;
+
+import "nftlotto/lottery.proto";
+import "nftlotto/ticket.proto";
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "github.com/l0k18/nftlotto/x/nftlotto/types";
+
+// Msg defines the Msg service.
+service Msg {
+    rpc CreateLottery(MsgCreateLottery) returns (MsgCreateLotteryResponse);
+  rpc UpdateLottery(MsgUpdateLottery) returns (MsgUpdateLotteryResponse);
+  rpc DeleteLottery(MsgDeleteLottery) returns (MsgDeleteLotteryResponse);
+rpc CreateTicket(MsgCreateTicket) returns (MsgCreateTicketResponse);
+  rpc UpdateTicket(MsgUpdateTicket) returns (MsgUpdateTicketResponse);
+  rpc DeleteTicket(MsgDeleteTicket) returns (MsgDeleteTicketResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgCreateLottery {
+  string creator = 1;
+  string name = 2;
+  uint64 ticketPrice = 3;
+  uint64 drawHeight = 4;
+}
+
+message MsgCreateLotteryResponse {
+  uint64 id = 1;
+}
+
+message MsgUpdateLottery {
+  string creator = 1;
+  uint64 id = 2;
+  string name = 3;
+  uint64 ticketPrice = 4;
+  uint64 drawHeight = 5;
+}
+
+message MsgUpdateLotteryResponse {}
+
+message MsgDeleteLottery {
+  string creator = 1;
+  uint64 id = 2;
+}
+
+message MsgDeleteLotteryResponse {}
+
+message MsgCreateTicket {
+  string creator = 1;
+  uint64 lottery = 2;
+}
+
+message MsgCreateTicketResponse {
+  uint64 id = 1;
+}
+
+message MsgUpdateTicket {
+  string creator = 1;
+  uint64 id = 2;
+  uint64 lottery = 3;
+}
+
+message MsgUpdateTicketResponse {}
+
+message MsgDeleteTicket {
+  string creator = 1;
+  uint64 id = 2;
+}
+
+message MsgDeleteTicketResponse {}
+
+// this line is used by starport scaffolding # proto/tx/message

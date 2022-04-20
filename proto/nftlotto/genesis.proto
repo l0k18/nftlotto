@@ -1,0 +1,20 @@
+syntax = "proto3";
+package l0k18.nftlotto.nftlotto;
+
+import "gogoproto/gogo.proto";
+import "nftlotto/params.proto";
+import "nftlotto/lottery.proto";
+import "nftlotto/ticket.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "github.com/l0k18/nftlotto/x/nftlotto/types";
+
+// GenesisState defines the nftlotto module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  repeated Lottery lotteryList = 2 [(gogoproto.nullable) = false];
+  uint64 lotteryCount = 3;
+  repeated Ticket ticketList = 4 [(gogoproto.nullable) = false];
+  uint64 ticketCount = 5;
+  // this line is used by starport scaffolding # genesis/proto/state
+}

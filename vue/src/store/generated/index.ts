@@ -20,6 +20,7 @@ import CosmosIbcGoIbcCoreChannelV1 from './cosmos/ibc-go/ibc.core.channel.v1'
 import CosmosIbcGoIbcCoreClientV1 from './cosmos/ibc-go/ibc.core.client.v1'
 import CosmosIbcGoIbcCoreConnectionV1 from './cosmos/ibc-go/ibc.core.connection.v1'
 import CosmosIbcGoIbcCorePortV1 from './cosmos/ibc-go/ibc.core.port.v1'
+import L0K18NftlottoL0K18NftlottoNftlotto from './l0k18/nftlotto/l0k18.nftlotto.nftlotto'
 
 
 export default { 
@@ -43,6 +44,7 @@ export default {
   CosmosIbcGoIbcCoreClientV1: load(CosmosIbcGoIbcCoreClientV1, 'ibc.core.client.v1'),
   CosmosIbcGoIbcCoreConnectionV1: load(CosmosIbcGoIbcCoreConnectionV1, 'ibc.core.connection.v1'),
   CosmosIbcGoIbcCorePortV1: load(CosmosIbcGoIbcCorePortV1, 'ibc.core.port.v1'),
+  L0K18NftlottoL0K18NftlottoNftlotto: load(L0K18NftlottoL0K18NftlottoNftlotto, 'l0k18.nftlotto.nftlotto'),
   
 }
 

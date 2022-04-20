@@ -1,0 +1,86 @@
+syntax = "proto3";
+package l0k18.nftlotto.nftlotto;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "nftlotto/params.proto";
+import "nftlotto/lottery.proto";
+import "nftlotto/ticket.proto";
+// this line is used by starport scaffolding # 1
+
+option go_package = "github.com/l0k18/nftlotto/x/nftlotto/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // Parameters queries the parameters of the module.
+  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/l0k18/nftlotto/nftlotto/params";
+  }
+  // Queries a Lottery by id.
+	rpc Lottery(QueryGetLotteryRequest) returns (QueryGetLotteryResponse) {
+		option (google.api.http).get = "/l0k18/nftlotto/nftlotto/lottery/{id}";
+	}
+
+	// Queries a list of Lottery items.
+	rpc LotteryAll(QueryAllLotteryRequest) returns (QueryAllLotteryResponse) {
+		option (google.api.http).get = "/l0k18/nftlotto/nftlotto/lottery";
+	}
+
+// Queries a Ticket by id.
+	rpc Ticket(QueryGetTicketRequest) returns (QueryGetTicketResponse) {
+		option (google.api.http).get = "/l0k18/nftlotto/nftlotto/ticket/{id}";
+	}
+
+	// Queries a list of Ticket items.
+	rpc TicketAll(QueryAllTicketRequest) returns (QueryAllTicketResponse) {
+		option (google.api.http).get = "/l0k18/nftlotto/nftlotto/ticket";
+	}
+
+// this line is used by starport scaffolding # 2
+}
+
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  // params holds all the parameters of this module.
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryGetLotteryRequest {
+	uint64 id = 1;
+}
+
+message QueryGetLotteryResponse {
+	Lottery Lottery = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllLotteryRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllLotteryResponse {
+	repeated Lottery Lottery = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetTicketRequest {
+	uint64 id = 1;
+}
+
+message QueryGetTicketResponse {
+	Ticket Ticket = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllTicketRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllTicketResponse {
+	repeated Ticket Ticket = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+// this line is used by starport scaffolding # 3
