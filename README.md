@@ -37,5 +37,3 @@ other configurations are required to assess the application.
     ignite scaffold list lottery name:string ticketPrice:uint drawHeight:uint
     ignite scaffold list ticket lottery:uint
 
-> note: go's `time.Time` is an int64 but the `int` type in ignite gives an int32
-> hence the use of uint for datestamps which don't have the 2038 problem. 
