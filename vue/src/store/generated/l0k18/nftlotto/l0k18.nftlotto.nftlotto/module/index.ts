@@ -4,21 +4,21 @@ import { StdFee } from "@cosmjs/launchpad";
 import { SigningStargateClient } from "@cosmjs/stargate";
 import { Registry, OfflineSigner, EncodeObject, DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import { Api } from "./rest";
+import { MsgDeleteTicket } from "./types/nftlotto/tx";
 import { MsgUpdateTicket } from "./types/nftlotto/tx";
 import { MsgCreateLottery } from "./types/nftlotto/tx";
 import { MsgDeleteLottery } from "./types/nftlotto/tx";
-import { MsgDeleteTicket } from "./types/nftlotto/tx";
-import { MsgUpdateLottery } from "./types/nftlotto/tx";
 import { MsgCreateTicket } from "./types/nftlotto/tx";
+import { MsgUpdateLottery } from "./types/nftlotto/tx";
 
 
 const types = [
+  ["/l0k18.nftlotto.nftlotto.MsgDeleteTicket", MsgDeleteTicket],
   ["/l0k18.nftlotto.nftlotto.MsgUpdateTicket", MsgUpdateTicket],
   ["/l0k18.nftlotto.nftlotto.MsgCreateLottery", MsgCreateLottery],
   ["/l0k18.nftlotto.nftlotto.MsgDeleteLottery", MsgDeleteLottery],
-  ["/l0k18.nftlotto.nftlotto.MsgDeleteTicket", MsgDeleteTicket],
-  ["/l0k18.nftlotto.nftlotto.MsgUpdateLottery", MsgUpdateLottery],
   ["/l0k18.nftlotto.nftlotto.MsgCreateTicket", MsgCreateTicket],
+  ["/l0k18.nftlotto.nftlotto.MsgUpdateLottery", MsgUpdateLottery],
   
 ];
 export const MissingWalletError = new Error("wallet is required");
@@ -51,12 +51,12 @@ const txClient = async (wallet: OfflineSigner, { addr: addr }: TxClientOptions =
 
   return {
     signAndBroadcast: (msgs: EncodeObject[], { fee, memo }: SignAndBroadcastOptions = {fee: defaultFee, memo: ""}) => client.signAndBroadcast(address, msgs, fee,memo),
+    msgDeleteTicket: (data: MsgDeleteTicket): EncodeObject => ({ typeUrl: "/l0k18.nftlotto.nftlotto.MsgDeleteTicket", value: MsgDeleteTicket.fromPartial( data ) }),
     msgUpdateTicket: (data: MsgUpdateTicket): EncodeObject => ({ typeUrl: "/l0k18.nftlotto.nftlotto.MsgUpdateTicket", value: MsgUpdateTicket.fromPartial( data ) }),
     msgCreateLottery: (data: MsgCreateLottery): EncodeObject => ({ typeUrl: "/l0k18.nftlotto.nftlotto.MsgCreateLottery", value: MsgCreateLottery.fromPartial( data ) }),
     msgDeleteLottery: (data: MsgDeleteLottery): EncodeObject => ({ typeUrl: "/l0k18.nftlotto.nftlotto.MsgDeleteLottery", value: MsgDeleteLottery.fromPartial( data ) }),
-    msgDeleteTicket: (data: MsgDeleteTicket): EncodeObject => ({ typeUrl: "/l0k18.nftlotto.nftlotto.MsgDeleteTicket", value: MsgDeleteTicket.fromPartial( data ) }),
-    msgUpdateLottery: (data: MsgUpdateLottery): EncodeObject => ({ typeUrl: "/l0k18.nftlotto.nftlotto.MsgUpdateLottery", value: MsgUpdateLottery.fromPartial( data ) }),
     msgCreateTicket: (data: MsgCreateTicket): EncodeObject => ({ typeUrl: "/l0k18.nftlotto.nftlotto.MsgCreateTicket", value: MsgCreateTicket.fromPartial( data ) }),
+    msgUpdateLottery: (data: MsgUpdateLottery): EncodeObject => ({ typeUrl: "/l0k18.nftlotto.nftlotto.MsgUpdateLottery", value: MsgUpdateLottery.fromPartial( data ) }),
     
   };
 };
