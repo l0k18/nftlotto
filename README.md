@@ -40,3 +40,7 @@ files, or copied back over from the `old/` directory's copy of the repository.
 When additional scaffold tasks are required, they can be added to the 
 `scaffold.sh` file and will be repeated in case of needing to roll 
 everything back.
+
+## nodejs stuff
+
+    nvm install v12.18.3
