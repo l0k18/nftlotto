@@ -29,11 +29,14 @@ Then, to start the application:
 For the purposes of this task the binary will be made available in release so no
 other configurations are required to assess the application.
 
-## ignite commands used to create this
+## Accelerate redoing the scaffold
 
-    ignite scaffold chain github.com/l0k18/nftlotteo --no-module
-    cd nftlotto
-    ignite scaffold module nftlotto --dep bank
-    ignite scaffold list lottery name:string ticketPrice:uint drawHeight:uint
-    ignite scaffold list ticket lottery:uint
+There is a script in [scaffold.sh](scaffold.sh) which automatically reruns 
+the scaffolding and archives the existing stuff inside a `.gitignore`d 
+folder `old`. After running this, any changes you made to implement the 
+application can be reverted by rolling back the changes for the individual 
+files, or copied back over from the `old/` directory's copy of the repository.
 
+When additional scaffold tasks are required, they can be added to the 
+`scaffold.sh` file and will be repeated in case of needing to roll 
+everything back.
