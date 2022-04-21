@@ -1,9 +1,9 @@
 package version
 
 var (
-	Version = VersionDefault
+	Version = Default
 )
 
 const (
-	VersionDefault = "0.0.1"
+	Default = "0.0.1"
 )
